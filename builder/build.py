@@ -134,7 +134,12 @@ Do this:
    "tests": ["<scenario: pass or what still fails>"]}}
 7. Finish with one line: the workflow path.
 
-Work fast: aim to be done within 40 minutes. Do not hard-code anything that is not in the case material."""
+Shell commands: you may run ONLY the two commands above, exactly in the form shown: starting with
+"python3 builder/publish.py" or "python3 builder/chat_test.py", from the current folder, one per call. Never add "cd",
+"&&", ";", pipes or anything else: such a command is refused. A refused command means only that its form was wrong.
+Use the Read, Glob and Grep tools (not the shell) to read files.
+Time limit: {minutes} minutes in total. Stop testing 5 minutes before the limit, make sure the last version is
+published and {meta_path} is written, and finish. Do not hard-code anything that is not in the case material."""
 
 
 async def run_claude(trace, label, prompt, max_turns=80, tools=None):
@@ -170,6 +175,7 @@ def main():
     ap.add_argument("--api", help="the bank's tool API file (spec mode)")
     ap.add_argument("--general", action="store_true", help="the case does not fit the spec form: Claude writes and tests the workflow itself")
     ap.add_argument("--mock-url", help="address of the mock of the client's services (general mode)")
+    ap.add_argument("--minutes", type=int, default=40, help="time limit for the general-mode session")
     ap.add_argument("--slot", required=True, help="your label; the same slot updates the same workflow")
     ap.add_argument("--spec", help="skip extraction and use this spec")
     ap.add_argument("--skip-review", action="store_true", help="skip the rule-by-rule check (only with --spec, for quick tests)")
@@ -251,9 +257,8 @@ def general(a, trace):
     case = " ".join(str(pathlib.Path(b).resolve()) for b in a.briefs)
     trace.line(f"GENERAL MODE. Case: {case}. Mock: {a.mock_url}")
     trace.line("STEP 1: Claude reads the case, writes the workflow, publishes it, tests it by chat and fixes it.")
-    tools = ["Read", "Write", "Edit", "Glob", "Grep", "Bash(python3 builder/publish.py:*)", "Bash(python3 builder/chat_test.py:*)",
-             "Bash(curl:*)", "Bash(ls:*)", "Bash(pdftotext:*)"]
-    asyncio.run(run_claude(trace, "build and test", GENERAL_PROMPT.format(case=case, mock_url=a.mock_url, slot=a.slot, wf_path=wf_path, meta_path=meta_path),
+    tools = ["Read", "Write", "Edit", "Glob", "Grep", "Bash(python3 builder/publish.py:*)", "Bash(python3 builder/chat_test.py:*)"]
+    asyncio.run(run_claude(trace, "build and test", GENERAL_PROMPT.format(case=case, mock_url=a.mock_url, slot=a.slot, wf_path=wf_path, meta_path=meta_path, minutes=a.minutes),
                            max_turns=200, tools=tools))
     if not wf_path.exists():
         trace.line("No workflow was written."); trace.close(); sys.exit("No workflow; see the trace.")
