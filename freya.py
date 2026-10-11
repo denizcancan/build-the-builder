@@ -15,17 +15,20 @@ def api(method, path, body=None, **params):
     req = urllib.request.Request(URL + path + q, data=json.dumps(body).encode() if body is not None else None, headers=HEADERS, method=method)
     # The platform sometimes answers 502/503/504 for a few minutes. Wait and try again, except for calls that
     # must not run twice (a simulation start, a chat turn).
-    tries = 1 if ("/simulations" in path and method == "POST") or "/chat/" in path else 10
+    once = ("/simulations" in path and method == "POST") or "/chat/" in path
+    tries = 10
     for i in range(tries):
         try:
             with urllib.request.urlopen(req, timeout=120) as r: out = json.load(r)
             break
         except urllib.error.HTTPError as e:
-            if e.code in (502, 503, 504) and i < tries - 1:
+            # 502/503: the request was refused, nothing ran, so even a simulation start may be sent again.
+            # 504: it may have run; only repeat calls that are safe to run twice.
+            if (e.code in (502, 503) or (e.code == 504 and not once)) and i < tries - 1:
                 print(f"Freya {method} {path} -> {e.code}, trying again in 30 s ({i + 1}/{tries - 1})", flush=True); time.sleep(30); continue
             raise RuntimeError(f"{method} {path} -> {e.code}: {e.read().decode()[:1500]}") from None
         except (urllib.error.URLError, TimeoutError) as e:
-            if i < tries - 1:
+            if not once and i < tries - 1:
                 print(f"Freya {method} {path} -> {e}, trying again in 30 s ({i + 1}/{tries - 1})", flush=True); time.sleep(30); continue
             raise
     return out.get("data", {}).get("result", out) if isinstance(out, dict) else out

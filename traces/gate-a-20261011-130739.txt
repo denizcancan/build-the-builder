@@ -7,3 +7,5 @@
 [2026-10-11T13:07:47+0300] Freya resources: workflow_id=bdedfe6e-2659-464b-be63-382cda2111a1 agent_id=6266ae3c-dd05-45a9-9de9-c050f7ff9c8b version=14 steps=27 tools=35
 [2026-10-11T13:07:48+0300] Exported to /Users/denizcan/dev/personal/freya_hackathon/build-the-builder/out/gate-a.export.json
 [2026-10-11T13:07:48+0300] STEP 4: self-test on the practice customers of brief A, 3 run(s).
+[2026-10-11T13:16:16+0300] test: the self-test stopped with an error: RuntimeError: POST /api/v2/simulations -> 503: {"success":false,"data":{"message":"API key validation is temporarily unavailable. Retry shortly.","result":null}}
+[2026-10-11T13:16:16+0300] END. Total time 517 s, 0 model calls.

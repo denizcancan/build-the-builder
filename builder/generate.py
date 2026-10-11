@@ -192,7 +192,9 @@ def pick_date(kind, deadline):
     return min(d, deadline)
 try:
     F = CFG['fields']
-    prods = get_products()[:CFG.get('max_products', 3)]
+    allp = get_products()
+    prods = allp[:CFG.get('max_products', 3)]
+    vars['products_not_handled'] = str(len(allp) - len(prods))
     if not prods:
         raise ValueError('no products')
     n = len(prods)
@@ -284,6 +286,8 @@ try:
         rel.append('- "this ' + WD[i] + '" = ' + t.isoformat() + (' (already past)' if t < today else '') + '; "next ' + WD[i] + '" = ' + nx.isoformat())
     hol = [say(datetime.date.fromisoformat(h)) for h in sorted(H) if today <= datetime.date.fromisoformat(h) <= latest + TD(days=10)]
     facts = ['Today: ' + sayiso(today) + '. Products: ' + str(n) + ', in this order.']
+    if len(allp) > n:
+        facts.append('The account has ' + str(len(allp) - n) + ' more late product(s) that this call cannot handle. Do not discuss them; if the customer asks, say that you do not have that information.')
     if hol:
         facts.append('BANK HOLIDAYS, never allowed as a payment date: ' + '; '.join(hol) + '. Weekends are never allowed either.')
     facts = facts + blocks
@@ -407,7 +411,7 @@ except Exception:
     pass
 '''
 
-GATE = os.environ.get("PROMISE_GATE", "1") == "1"   # promises can only be saved after an extracted yes to a read-back
+GATE = True   # promises can only be saved after an extracted yes to a read-back
 
 
 def code_with(cfg, *parts):
