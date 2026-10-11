@@ -1,0 +1,292 @@
+{
+ "agent_id": "29def1f0-e27a-4a02-ba0f-fc532afaae6f",
+ "simulation_id": "9c887b7d-6b62-41cb-8915-1acc93cbfe36",
+ "iteration_id": "fc44575e-15d7-4dec-beb7-ce9f022447a7",
+ "seconds": 222,
+ "passed": 1,
+ "total": 3,
+ "runs": 3,
+ "final": [
+  {
+   "id": "PUB-11",
+   "family": "Multi-product",
+   "passes": 3,
+   "runs": 3,
+   "pass": true
+  },
+  {
+   "id": "PUB-12",
+   "family": "Multi-product",
+   "passes": 2,
+   "runs": 3,
+   "pass": false
+  },
+  {
+   "id": "PUB-13",
+   "family": "Multi-product",
+   "passes": 2,
+   "runs": 3,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-11",
+   "level": "medium",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "9c762f6d-b68b-4775-9d12-b109b20793d8",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_c441ef96-66e",
+   "slowest_turn_s": 4.4,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-12",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "0ad3f90b-24be-4089-bd58-7027cccdda92",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "add_note",
+    "add_note",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_795b4a12-5aa",
+   "slowest_turn_s": 3.3,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-13",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "promises [('p1', 300.0, '2026-10-23'), ('p2', 900.0, '2026-10-23')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+    "conversation: The agent failed to meet the success criteria regarding the specific dates for the promises. The credit card was recorded for 23 October instead of 30 October, as requested in the criteria. Consequently, the read-back only mentioned one date (23 October) for both products instead of naming both distinct dates (23 and 30 October). The call ended properly with the assistant ending the call after rec"
+   ],
+   "call_id": "1df78e4b-578c-4e9f-96a1-e91e3c102cc5",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_297c815c-509",
+   "slowest_turn_s": 2.0,
+   "ended": "assistant-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "484d8109-933e-48f8-bb56-548080537d81",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_16040165-c0e",
+    "slowest_turn_s": 5.1,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "notes [('p3', 'refused')], expected [('p2', 'refused'), ('p3', 'refused')]",
+     "conversation: The conversation failed on one success criterion: one 'refused' note for each of the other two products. While a 'refused' note was successfully added for the car loan (System Event for add_note_3), the attempt for the personal loan (System Event for add_note_2) failed. The API arguments for the personal loan note omitted the required 'reason': 'refused' field, and the API response returned an err"
+    ],
+    "call_id": "286bfd64-0485-4dff-9d53-317d198ecb67",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_b3671215-c47",
+    "slowest_turn_s": 9.2,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "fddf9ee4-b398-42dd-bcbb-e00196610f13",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_a8464893-8ff",
+    "slowest_turn_s": 4.4,
+    "ended": "assistant-ended-call"
+   }
+  ],
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "93cdf4a4-b3fc-4899-a53a-c561fc33dbed",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_210f5ea1-512",
+    "slowest_turn_s": 11.1,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "672e2330-02bd-4bcf-b22c-50274aedadf2",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_82bfee5c-2a6",
+    "slowest_turn_s": 9.0,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "19f996cf-8884-4448-95a5-6d0244683920",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_bdaf033c-f3c",
+    "slowest_turn_s": 7.1,
+    "ended": "assistant-ended-call"
+   }
+  ],
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "9c762f6d-b68b-4775-9d12-b109b20793d8",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_c441ef96-66e",
+    "slowest_turn_s": 4.4,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "0ad3f90b-24be-4089-bd58-7027cccdda92",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_795b4a12-5aa",
+    "slowest_turn_s": 3.3,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "promises [('p1', 300.0, '2026-10-23'), ('p2', 900.0, '2026-10-23')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+     "conversation: The agent failed to meet the success criteria regarding the specific dates for the promises. The credit card was recorded for 23 October instead of 30 October, as requested in the criteria. Consequently, the read-back only mentioned one date (23 October) for both products instead of naming both distinct dates (23 and 30 October). The call ended properly with the assistant ending the call after rec"
+    ],
+    "call_id": "1df78e4b-578c-4e9f-96a1-e91e3c102cc5",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_297c815c-509",
+    "slowest_turn_s": 2.0,
+    "ended": "assistant-ended-call"
+   }
+  ]
+ ]
+}

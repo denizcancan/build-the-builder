@@ -1,0 +1,304 @@
+{
+ "agent_id": "c897a4cf-52d5-4072-aeda-12b2be34a762",
+ "simulation_id": "95a092f6-c805-4dbd-afab-b0207fecbab5",
+ "iteration_id": "db1c3be6-ef94-40f6-8e05-a10334accf57",
+ "seconds": 337,
+ "passed": 0,
+ "total": 3,
+ "runs": 3,
+ "final": [
+  {
+   "id": "PUB-11",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 3,
+   "pass": false
+  },
+  {
+   "id": "PUB-12",
+   "family": "Multi-product",
+   "passes": 2,
+   "runs": 3,
+   "pass": false
+  },
+  {
+   "id": "PUB-13",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 3,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-11",
+   "level": "medium",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "outcome (None, None), expected ('promise', None)",
+    "the call was not closed with close_call",
+    "conversation: The call failed on two criteria: 1. It ended abruptly with an error after the confirmation, rather than being properly closed by the agent. 2. The agent failed to state the three products before making the first ask; specifically, in [Message 6], the agent lists the credit card and personal loan, then immediately asks for payment for all of them, only mentioning the car loan after that first ask h"
+   ],
+   "call_id": "0bce974d-81b3-4411-b09d-460bff8097c0",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "create_promise"
+   ],
+   "customer_id": "c_5085ebdc-e5d",
+   "slowest_turn_s": 8.9,
+   "ended": "customer-ended-call"
+  },
+  {
+   "id": "PUB-12",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "22c37b61-47be-4315-870d-d481d9eaaeb4",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "add_note",
+    "add_note",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_c20629d3-b27",
+   "slowest_turn_s": 8.1,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-13",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "outcome (None, None), expected ('promise', None)",
+    "the call was not closed with close_call"
+   ],
+   "call_id": "a57f2c45-ad90-4ada-bb85-70418757b30c",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise"
+   ],
+   "customer_id": "c_53217f90-bff",
+   "slowest_turn_s": 8.1,
+   "ended": "customer-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "the call was not closed with close_call"
+    ],
+    "call_id": "cb741b98-a80b-46e9-9ae7-b8c7a5c8a79c",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise"
+    ],
+    "customer_id": "c_5390c3f9-8a2",
+    "slowest_turn_s": 10.6,
+    "ended": "customer-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "465f034a-d2d6-481b-abc8-64cb61bb00f1",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_f4bf08d2-bec",
+    "slowest_turn_s": 4.9,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "the call was not closed with close_call"
+    ],
+    "call_id": "edccbe6f-5a1f-45e7-83b8-ad364e71f81a",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise"
+    ],
+    "customer_id": "c_69e58171-ea1",
+    "slowest_turn_s": 8.2,
+    "ended": "customer-ended-call"
+   }
+  ],
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "the call was not closed with close_call"
+    ],
+    "call_id": "6afc047d-816c-441b-ab35-28a822c6e6f9",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise"
+    ],
+    "customer_id": "c_e9bf292a-c2e",
+    "slowest_turn_s": 20.6,
+    "ended": "customer-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "conversation: The assistant failed the success criteria regarding the number of collection attempts for the car loan. While the criteria specified 'one on the car loan (early band)', the assistant made two attempts: one for the full amount in [Message 16] and a second for the instalment amount in [Message 18]. All other criteria were met: the phone question was repeated exactly once ([Message 6]), the date of b"
+    ],
+    "call_id": "2385573e-db8a-464a-ad02-a908cc0d0570",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_03687b24-186",
+    "slowest_turn_s": 5.6,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "promises [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-30')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+     "the call was not closed with close_call",
+     "conversation: The agent failed to record the personal loan on its specific deadline of 23 October, instead recording it for 30 October as requested by the user. As a result, the read-back only mentioned 30 October for both products instead of naming both distinct dates (23 and 30 October) as required by the success criteria."
+    ],
+    "call_id": "1a61028b-d4a0-49fd-9c38-e904cd11bff3",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise"
+    ],
+    "customer_id": "c_8fd50c7e-a6b",
+    "slowest_turn_s": 5.7,
+    "ended": "customer-ended-call"
+   }
+  ],
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "the call was not closed with close_call",
+     "conversation: The call failed on two criteria: 1. It ended abruptly with an error after the confirmation, rather than being properly closed by the agent. 2. The agent failed to state the three products before making the first ask; specifically, in [Message 6], the agent lists the credit card and personal loan, then immediately asks for payment for all of them, only mentioning the car loan after that first ask h"
+    ],
+    "call_id": "0bce974d-81b3-4411-b09d-460bff8097c0",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise"
+    ],
+    "customer_id": "c_5085ebdc-e5d",
+    "slowest_turn_s": 8.9,
+    "ended": "customer-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "22c37b61-47be-4315-870d-d481d9eaaeb4",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_c20629d3-b27",
+    "slowest_turn_s": 8.1,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "the call was not closed with close_call"
+    ],
+    "call_id": "a57f2c45-ad90-4ada-bb85-70418757b30c",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise"
+    ],
+    "customer_id": "c_53217f90-bff",
+    "slowest_turn_s": 8.1,
+    "ended": "customer-ended-call"
+   }
+  ]
+ ]
+}

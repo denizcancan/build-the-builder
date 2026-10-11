@@ -1,0 +1,66 @@
+{
+ "agent_id": "6266ae3c-dd05-45a9-9de9-c050f7ff9c8b",
+ "simulation_id": "ce66d0e7-3023-4524-b28b-34c785b81075",
+ "iteration_id": "b9c2c7a3-b5a4-4bce-85bb-abe8af76decb",
+ "seconds": 65,
+ "passed": 0,
+ "total": 1,
+ "runs": 1,
+ "final": [
+  {
+   "id": "PUB-07",
+   "family": "Dates",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-07",
+   "level": "hard",
+   "family": "Dates",
+   "pass": false,
+   "failed": [
+    "outcome ('no_promise', 'refused'), expected ('promise', None)",
+    "promises [], expected [('p1', 540.0, '2026-10-27')]",
+    "conversation: The agent successfully asked for the exact day once (Message 14), rejected October 26th due to it being a bank holiday and offered October 27th (Message 16). However, the promise was not recorded. In Message 22, the agent stated there was a technical issue recording the promise, and the system event for closing the call confirms the outcome was \"no_promise\". Because the criteria requires the promi"
+   ],
+   "call_id": "4b5f620c-0fdb-48c7-8267-b0ef1ac67b40",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "close_call"
+   ],
+   "customer_id": "c_3a377541-a4e",
+   "slowest_turn_s": 6.9,
+   "ended": "assistant-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-07",
+    "level": "hard",
+    "family": "Dates",
+    "pass": false,
+    "failed": [
+     "outcome ('no_promise', 'refused'), expected ('promise', None)",
+     "promises [], expected [('p1', 540.0, '2026-10-27')]",
+     "conversation: The agent successfully asked for the exact day once (Message 14), rejected October 26th due to it being a bank holiday and offered October 27th (Message 16). However, the promise was not recorded. In Message 22, the agent stated there was a technical issue recording the promise, and the system event for closing the call confirms the outcome was \"no_promise\". Because the criteria requires the promi"
+    ],
+    "call_id": "4b5f620c-0fdb-48c7-8267-b0ef1ac67b40",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "close_call"
+    ],
+    "customer_id": "c_3a377541-a4e",
+    "slowest_turn_s": 6.9,
+    "ended": "assistant-ended-call"
+   }
+  ]
+ ]
+}

@@ -1,0 +1,168 @@
+{
+ "agent_id": "bc403305-9d51-4c17-8e51-7ff594a839e6",
+ "simulation_id": "4dce4167-4e90-4723-9e4f-ec7ffbca4047",
+ "iteration_id": "f62a6c9c-d52b-4d96-af3e-fbf41fd6d5a2",
+ "seconds": 64,
+ "passed": 1,
+ "total": 3,
+ "runs": 1,
+ "final": [
+  {
+   "id": "PUB-11",
+   "family": "Multi-product",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-12",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  },
+  {
+   "id": "PUB-13",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-11",
+   "level": "medium",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "08a03cb2-2cf6-4720-8bbd-7970cce9b202",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_d6d1e883-bbf",
+   "slowest_turn_s": 3.2,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-12",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "conversation: - The Date of Birth question was asked again in [Message 4] ('What is your full date of birth?'), which violated the requirement that it not be asked again. - The Phone question was not asked again; in [Message 8], the assistant only prompted the user to continue ('Please go on'), failing the requirement to ask it again once. - All other criteria were met: exactly one promise was created for the c"
+   ],
+   "call_id": "c77a9635-5db5-435d-87dc-22d9ea450032",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "add_note",
+    "add_note",
+    "add_note",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_af7533ef-26f",
+   "slowest_turn_s": 2.1,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-13",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "promises [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-30')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+    "conversation: The evaluation failed because the success criteria regarding the loan payment date were not met. - The loan was recorded for 30 October instead of its specific deadline of 23 October (System Event for create_promise_2 used '2026-10-30'). - Consequently, the read-back only named the 30 October date for both products (Message 14), rather than naming both required dates (30 October and 23 October). -"
+   ],
+   "call_id": "e9ef6256-5810-454f-a76b-ad0ae72b9421",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_b49cfb2b-d93",
+   "slowest_turn_s": 8.2,
+   "ended": "assistant-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "08a03cb2-2cf6-4720-8bbd-7970cce9b202",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_d6d1e883-bbf",
+    "slowest_turn_s": 3.2,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "conversation: - The Date of Birth question was asked again in [Message 4] ('What is your full date of birth?'), which violated the requirement that it not be asked again. - The Phone question was not asked again; in [Message 8], the assistant only prompted the user to continue ('Please go on'), failing the requirement to ask it again once. - All other criteria were met: exactly one promise was created for the c"
+    ],
+    "call_id": "c77a9635-5db5-435d-87dc-22d9ea450032",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_af7533ef-26f",
+    "slowest_turn_s": 2.1,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "promises [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-30')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+     "conversation: The evaluation failed because the success criteria regarding the loan payment date were not met. - The loan was recorded for 30 October instead of its specific deadline of 23 October (System Event for create_promise_2 used '2026-10-30'). - Consequently, the read-back only named the 30 October date for both products (Message 14), rather than naming both required dates (30 October and 23 October). -"
+    ],
+    "call_id": "e9ef6256-5810-454f-a76b-ad0ae72b9421",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_b49cfb2b-d93",
+    "slowest_turn_s": 8.2,
+    "ended": "assistant-ended-call"
+   }
+  ]
+ ]
+}

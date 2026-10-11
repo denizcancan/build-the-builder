@@ -1,0 +1,166 @@
+{
+ "agent_id": "bc403305-9d51-4c17-8e51-7ff594a839e6",
+ "simulation_id": "76c5cca1-b10c-4ee7-bce0-ba1b41c5de2f",
+ "iteration_id": "1372d37e-d639-4e2b-8ce5-280fdb26d38c",
+ "seconds": 178,
+ "passed": 2,
+ "total": 3,
+ "runs": 1,
+ "final": [
+  {
+   "id": "PUB-11",
+   "family": "Multi-product",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-12",
+   "family": "Multi-product",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-13",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-11",
+   "level": "medium",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "53878f27-dee4-4a9d-b9f8-3352431c0ac3",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_df82cb37-3ac",
+   "slowest_turn_s": 3.6,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-12",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "b1cd779b-6c27-4edf-ba05-fc115a96834a",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "add_note",
+    "add_note",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_d4a4acad-4a8",
+   "slowest_turn_s": 1.8,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-13",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "outcome (None, None), expected ('promise', None)",
+    "promises [], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+    "notes [('p2', 'refused')], expected []",
+    "the call was not closed with close_call",
+    "conversation: The success criteria were not met for the following reasons: - The credit card payment for 30 October was never recorded. Although the agent acknowledged the date was possible in [Message 14], no tool call was executed to log this arrangement. - The loan payment was not recorded for 23 October. Due to communication issues and the user's repetitive filler responses, the agent eventually marked the "
+   ],
+   "call_id": "211573e0-6c7d-4cf7-89b0-a2530d958340",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "add_note"
+   ],
+   "customer_id": "c_b6e9f9c3-58b",
+   "slowest_turn_s": 9.4,
+   "ended": "customer-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "53878f27-dee4-4a9d-b9f8-3352431c0ac3",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_df82cb37-3ac",
+    "slowest_turn_s": 3.6,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "b1cd779b-6c27-4edf-ba05-fc115a96834a",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_d4a4acad-4a8",
+    "slowest_turn_s": 1.8,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "outcome (None, None), expected ('promise', None)",
+     "promises [], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+     "notes [('p2', 'refused')], expected []",
+     "the call was not closed with close_call",
+     "conversation: The success criteria were not met for the following reasons: - The credit card payment for 30 October was never recorded. Although the agent acknowledged the date was possible in [Message 14], no tool call was executed to log this arrangement. - The loan payment was not recorded for 23 October. Due to communication issues and the user's repetitive filler responses, the agent eventually marked the "
+    ],
+    "call_id": "211573e0-6c7d-4cf7-89b0-a2530d958340",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note"
+    ],
+    "customer_id": "c_b6e9f9c3-58b",
+    "slowest_turn_s": 9.4,
+    "ended": "customer-ended-call"
+   }
+  ]
+ ]
+}

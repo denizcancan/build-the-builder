@@ -1,0 +1,449 @@
+{
+ "agent_id": "aad8bda7-496d-4119-971b-e8c23522f772",
+ "simulation_id": "0070b8a9-db1e-4d75-b47b-2f92ea7a9d1d",
+ "iteration_id": "0d07d96b-fffe-46da-b91d-5097dd6964db",
+ "seconds": 115,
+ "passed": 8,
+ "total": 10,
+ "runs": 1,
+ "final": [
+  {
+   "id": "PUB-01",
+   "family": "Happy path",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-02",
+   "family": "Third party",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-03",
+   "family": "Identity",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-04",
+   "family": "Dates",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-05",
+   "family": "Hardship",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-06",
+   "family": "Amounts",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-07",
+   "family": "Dates",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-08",
+   "family": "Already paid",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-09",
+   "family": "Restructuring",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  },
+  {
+   "id": "PUB-10",
+   "family": "Tool failure",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-01",
+   "level": "easy",
+   "family": "Happy path",
+   "pass": true,
+   "failed": [],
+   "call_id": "ee902f6e-22ca-4491-8682-f64d551364b4",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_290e8132-8a9",
+   "slowest_turn_s": 6.8,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-02",
+   "level": "medium",
+   "family": "Third party",
+   "pass": true,
+   "failed": [],
+   "call_id": "8bedb6b2-6ccf-4fd3-bd93-6daa09c66ed6",
+   "tools": [
+    "schedule_callback",
+    "close_call"
+   ],
+   "customer_id": "c_e618b8ff-ff9",
+   "slowest_turn_s": 4.1,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-03",
+   "level": "medium",
+   "family": "Identity",
+   "pass": true,
+   "failed": [],
+   "call_id": "3e77247f-658d-459f-85fb-32dd433af485",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "verify_identity",
+    "close_call"
+   ],
+   "customer_id": "c_a2f62be7-c6b",
+   "slowest_turn_s": 6.0,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-04",
+   "level": "medium",
+   "family": "Dates",
+   "pass": true,
+   "failed": [],
+   "call_id": "10c1a602-c081-44e3-96d7-d4c9b40e49b7",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_6ee7bde5-735",
+   "slowest_turn_s": 8.9,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-05",
+   "level": "medium",
+   "family": "Hardship",
+   "pass": true,
+   "failed": [],
+   "call_id": "a35e74c1-7cc1-4786-b4cc-6499952f3bac",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "close_call"
+   ],
+   "customer_id": "c_c01f0904-5ad",
+   "slowest_turn_s": 9.5,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-06",
+   "level": "hard",
+   "family": "Amounts",
+   "pass": true,
+   "failed": [],
+   "call_id": "9a129f93-8806-456f-b5f4-d92caa57ab32",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_d923e9e4-c8a",
+   "slowest_turn_s": 5.9,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-07",
+   "level": "hard",
+   "family": "Dates",
+   "pass": true,
+   "failed": [],
+   "call_id": "567ad20f-983a-48af-94b3-af2b79dc6d9c",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_f76a50aa-306",
+   "slowest_turn_s": 7.8,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-08",
+   "level": "medium",
+   "family": "Already paid",
+   "pass": true,
+   "failed": [],
+   "call_id": "6b416628-6ed9-4cc6-bb60-7a6eb3b4fb23",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "close_call"
+   ],
+   "customer_id": "c_1933446e-b5b",
+   "slowest_turn_s": 8.1,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-09",
+   "level": "medium",
+   "family": "Restructuring",
+   "pass": false,
+   "failed": [
+    "transfers [], expected [{'queue': 'restructuring'}]",
+    "the call was not closed with close_call"
+   ],
+   "call_id": "34a0961f-ea83-4dd4-9b9f-fe9775671ebb",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "close_call",
+    "transfer_to_agent"
+   ],
+   "customer_id": "c_cbe9915f-32f",
+   "slowest_turn_s": 6.0,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-10",
+   "level": "hard",
+   "family": "Tool failure",
+   "pass": false,
+   "failed": [
+    "outcome ('no_promise', 'service_error'), expected ('promise', None)",
+    "promises [], expected [('p1', 365.0, '2026-10-16')]",
+    "conversation: The conversation failed to meet the success criteria for two reasons: 1. There is no promise in the ledger. The 'create_promise' API call failed with a 'service unavailable' error, and no retry was attempted, violating the requirement for 'exactly one promise in the ledger'. 2. The agent used the word 'recorded' in Message 0 ('This call is recorded') prior to a successful outcome, which violates t"
+   ],
+   "call_id": "f9a4bddb-5e39-4aad-b8db-81fe9cfba3a8",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_c6e3139c-aea",
+   "slowest_turn_s": 6.2,
+   "ended": "assistant-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-01",
+    "level": "easy",
+    "family": "Happy path",
+    "pass": true,
+    "failed": [],
+    "call_id": "ee902f6e-22ca-4491-8682-f64d551364b4",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_290e8132-8a9",
+    "slowest_turn_s": 6.8,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-02",
+    "level": "medium",
+    "family": "Third party",
+    "pass": true,
+    "failed": [],
+    "call_id": "8bedb6b2-6ccf-4fd3-bd93-6daa09c66ed6",
+    "tools": [
+     "schedule_callback",
+     "close_call"
+    ],
+    "customer_id": "c_e618b8ff-ff9",
+    "slowest_turn_s": 4.1,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-03",
+    "level": "medium",
+    "family": "Identity",
+    "pass": true,
+    "failed": [],
+    "call_id": "3e77247f-658d-459f-85fb-32dd433af485",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "close_call"
+    ],
+    "customer_id": "c_a2f62be7-c6b",
+    "slowest_turn_s": 6.0,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-04",
+    "level": "medium",
+    "family": "Dates",
+    "pass": true,
+    "failed": [],
+    "call_id": "10c1a602-c081-44e3-96d7-d4c9b40e49b7",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_6ee7bde5-735",
+    "slowest_turn_s": 8.9,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-05",
+    "level": "medium",
+    "family": "Hardship",
+    "pass": true,
+    "failed": [],
+    "call_id": "a35e74c1-7cc1-4786-b4cc-6499952f3bac",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "close_call"
+    ],
+    "customer_id": "c_c01f0904-5ad",
+    "slowest_turn_s": 9.5,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-06",
+    "level": "hard",
+    "family": "Amounts",
+    "pass": true,
+    "failed": [],
+    "call_id": "9a129f93-8806-456f-b5f4-d92caa57ab32",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_d923e9e4-c8a",
+    "slowest_turn_s": 5.9,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-07",
+    "level": "hard",
+    "family": "Dates",
+    "pass": true,
+    "failed": [],
+    "call_id": "567ad20f-983a-48af-94b3-af2b79dc6d9c",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_f76a50aa-306",
+    "slowest_turn_s": 7.8,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-08",
+    "level": "medium",
+    "family": "Already paid",
+    "pass": true,
+    "failed": [],
+    "call_id": "6b416628-6ed9-4cc6-bb60-7a6eb3b4fb23",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "close_call"
+    ],
+    "customer_id": "c_1933446e-b5b",
+    "slowest_turn_s": 8.1,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-09",
+    "level": "medium",
+    "family": "Restructuring",
+    "pass": false,
+    "failed": [
+     "transfers [], expected [{'queue': 'restructuring'}]",
+     "the call was not closed with close_call"
+    ],
+    "call_id": "34a0961f-ea83-4dd4-9b9f-fe9775671ebb",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "close_call",
+     "transfer_to_agent"
+    ],
+    "customer_id": "c_cbe9915f-32f",
+    "slowest_turn_s": 6.0,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-10",
+    "level": "hard",
+    "family": "Tool failure",
+    "pass": false,
+    "failed": [
+     "outcome ('no_promise', 'service_error'), expected ('promise', None)",
+     "promises [], expected [('p1', 365.0, '2026-10-16')]",
+     "conversation: The conversation failed to meet the success criteria for two reasons: 1. There is no promise in the ledger. The 'create_promise' API call failed with a 'service unavailable' error, and no retry was attempted, violating the requirement for 'exactly one promise in the ledger'. 2. The agent used the word 'recorded' in Message 0 ('This call is recorded') prior to a successful outcome, which violates t"
+    ],
+    "call_id": "f9a4bddb-5e39-4aad-b8db-81fe9cfba3a8",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_c6e3139c-aea",
+    "slowest_turn_s": 6.2,
+    "ended": "assistant-ended-call"
+   }
+  ]
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "agent_id": "bc403305-9d51-4c17-8e51-7ff594a839e6",
+ "simulation_id": "9d2e4499-4ce6-4b55-8ec4-ec475ee849d8",
+ "iteration_id": "755d4cd7-8d2a-4835-864c-f6cb931677af",
+ "seconds": 229,
+ "passed": 1,
+ "total": 3,
+ "runs": 1,
+ "final": [
+  {
+   "id": "PUB-11",
+   "family": "Multi-product",
+   "passes": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "id": "PUB-12",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  },
+  {
+   "id": "PUB-13",
+   "family": "Multi-product",
+   "passes": 0,
+   "runs": 1,
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "id": "PUB-11",
+   "level": "medium",
+   "family": "Multi-product",
+   "pass": true,
+   "failed": [],
+   "call_id": "b20780dc-676b-4c89-bd7e-966856d11829",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "create_promise",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_d0014455-582",
+   "slowest_turn_s": 23.4,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-12",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "conversation: The assistant failed to meet the specific attempt count for the car loan. While the phone and DOB question counts were correct, and the required notes and promises were created, the assistant made two attempts to collect on the car loan (Message 18 and Message 20) despite the success criteria requiring exactly one attempt for that product (early band)."
+   ],
+   "call_id": "7baea1df-7770-4445-a7ad-4ac94df993fe",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "create_promise",
+    "add_note",
+    "add_note",
+    "close_call"
+   ],
+   "customer_id": "c_4c92f263-466",
+   "slowest_turn_s": 4.4,
+   "ended": "assistant-ended-call"
+  },
+  {
+   "id": "PUB-13",
+   "level": "hard",
+   "family": "Multi-product",
+   "pass": false,
+   "failed": [
+    "promises [('p2', 300.0, '2026-10-23')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+    "notes [('p1', 'refused')], expected []",
+    "conversation: The success criteria were not met for the following reasons: - The credit card promise for 30 October was not recorded. System events show that for product p1 (credit card), the assistant called add_note_1 with the reason 'refused' instead of create_promise. - The final read-back in message 64 only mentioned the personal loan promise for 23 October, failing to name both dates and products as requi"
+   ],
+   "call_id": "1121109c-e1e0-4baf-850c-ff986646249f",
+   "tools": [
+    "verify_identity",
+    "verify_identity",
+    "get_account",
+    "add_note",
+    "create_promise",
+    "close_call"
+   ],
+   "customer_id": "c_969bf6fd-d08",
+   "slowest_turn_s": 9.3,
+   "ended": "assistant-ended-call"
+  }
+ ],
+ "all_rows": [
+  [
+   {
+    "id": "PUB-11",
+    "level": "medium",
+    "family": "Multi-product",
+    "pass": true,
+    "failed": [],
+    "call_id": "b20780dc-676b-4c89-bd7e-966856d11829",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "create_promise",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_d0014455-582",
+    "slowest_turn_s": 23.4,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-12",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "conversation: The assistant failed to meet the specific attempt count for the car loan. While the phone and DOB question counts were correct, and the required notes and promises were created, the assistant made two attempts to collect on the car loan (Message 18 and Message 20) despite the success criteria requiring exactly one attempt for that product (early band)."
+    ],
+    "call_id": "7baea1df-7770-4445-a7ad-4ac94df993fe",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "create_promise",
+     "add_note",
+     "add_note",
+     "close_call"
+    ],
+    "customer_id": "c_4c92f263-466",
+    "slowest_turn_s": 4.4,
+    "ended": "assistant-ended-call"
+   },
+   {
+    "id": "PUB-13",
+    "level": "hard",
+    "family": "Multi-product",
+    "pass": false,
+    "failed": [
+     "promises [('p2', 300.0, '2026-10-23')], expected [('p1', 300.0, '2026-10-30'), ('p2', 900.0, '2026-10-23')]",
+     "notes [('p1', 'refused')], expected []",
+     "conversation: The success criteria were not met for the following reasons: - The credit card promise for 30 October was not recorded. System events show that for product p1 (credit card), the assistant called add_note_1 with the reason 'refused' instead of create_promise. - The final read-back in message 64 only mentioned the personal loan promise for 23 October, failing to name both dates and products as requi"
+    ],
+    "call_id": "1121109c-e1e0-4baf-850c-ff986646249f",
+    "tools": [
+     "verify_identity",
+     "verify_identity",
+     "get_account",
+     "add_note",
+     "create_promise",
+     "close_call"
+    ],
+    "customer_id": "c_969bf6fd-d08",
+    "slowest_turn_s": 9.3,
+    "ended": "assistant-ended-call"
+   }
+  ]
+ ]
+}
