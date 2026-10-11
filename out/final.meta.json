@@ -1,0 +1,29 @@
+{
+  "language": "tr",
+  "conflicts": [
+    "Silence: 2 Sep analysis and Burcu's 28 Sep mail (third silence -> main menu) vs 7 Oct session / 9 Oct recap / 8 Oct analysis (third silence -> 'Sesinizi alamadığım için görüşmeyi sonlandırıyorum.' and hang up): used the later rule (system prompt asks again on silence; the platform's inactivity handling ends the call).",
+    "Angry caller: 2 Sep analysis 'one calming reply', 9 Oct recap mail draft 'two' vs Selin's correction in the 9 Oct recap and the 8 Oct analysis 'three calming replies, then agent': used three.",
+    "Out-of-scope questions: 2 Sep analysis and 8 Oct analysis 8.4 (straight to main menu) vs 7 Oct session + 9 Oct recap (ask 'Size bu konuda yardımcı olamıyorum. Sizi ana menüye aktarmamı ister misiniz?', yes -> menu, no -> continue): used the recap.",
+    "Three failed tries: 2 Sep 'Sizi ana menüye yönlendiriyorum' vs 7 Oct / 8 Oct 'Size şu anda yardımcı olamıyorum. Sizi ana menüye aktarıyorum.': used the later sentence.",
+    "Same last four digits: 2 Sep analysis (ask the full number) vs 7 Oct / 8 Oct / 9 Oct recap (last six first, then full number): used last four -> last six -> full number.",
+    "Currency names: 2 Sep table ('TL') and Ozan's 10 Oct suggestion ('Sterlin') vs Elçin/Kerem 7 Oct and 10 Oct: always full names Türk Lirası, Dolar, Euro, İngiliz Sterlini.",
+    "Card number masking: 8 Oct analysis says the services return masked numbers vs 9 Oct recap (production returns the full number): the agent never says more than the last four digits and sends cardNumber exactly as cards.list returned it.",
+    "Statement week limit: IVR prompt sheet / FAQ ('once a month, three times a year', 'up to three times a year') vs Kerem 7 Oct (once per calendar year): used once per calendar year, mentioned in the options sentence; no service flag exists, so the change is always offered.",
+    "Joint statement warning: 2 Sep analysis (after the confirmation question) vs 7 Oct session / 8 Oct analysis (before 'Onaylıyor musunuz?'): the warning is said before the question.",
+    "Other-card question vs offer order: 10 Oct session (ask 'Başka bir kartınızın borcunu öğrenmek ister misiniz?' before the offer) confirms 8 Oct: used other-card question first.",
+    "Card with no statement yet: 10 Oct session: say there is no statement debt because no statement was cut, plus the first statement date only if the service gives it; never invent a date.",
+    "Statement cut day: 10 Oct session: 'Hesap kesim tarihiniz bugün, ekstreniz saat 00.00 itibarıyla kesilecek.' first, then totalDebt per currency.",
+    "No-eligible-card sentence: 2 Sep 'yönlendiriyorum' vs 8 Oct 'aktarıyorum': used 8 Oct.",
+    "Statement by e-mail: FAQ (any address) vs analysis / kickoff mails (only the registered address, only the latest statement): used the registered address and the latest statement only.",
+    "Third-party card: 8 Oct analysis says send the caller back to the IVR login step vs example scenario 5 (security sentence, then main menu): used the security sentence and the main-menu hand-back.",
+    "Second-factor box in the flow drawing: never built (Burcu 28 Sep, Selin): no identity check in the agent."
+  ],
+  "tests": [
+    "Publish: Freya validation passed (valid, dry run), published as workflow f49e49a0-e4d3-40a0-b9ac-552eb3fcd815 version 2.",
+    "Example 1 (95004361 single card, below minimum): not run, chat route returned 504 (also on retry).",
+    "Example 2 (96158684 week change to 3rd week): not run, chat route returned 504.",
+    "Example 3 (97526380 all cards -> Yıldız Premium): not run, chat route returned 504.",
+    "Example 4 (92460108 last month's statement by e-mail): not run, chat route returned 504.",
+    "Service error (97073972 cards.list 500 -> agent) and hand-off: not run, chat route returned 504."
+  ]
+}

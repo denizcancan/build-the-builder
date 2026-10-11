@@ -1,0 +1,19 @@
+{
+  "team": "Nomos",
+  "members": [
+    {
+      "name": "Uygar Aras",
+      "email": "uygararas3@gmail.com"
+    },
+    {
+      "name": "Denizcan Ozdemir",
+      "email": "denizcan.ozdemir01@gmail.com"
+    }
+  ],
+  "repo": "https://github.com/denizcancan/build-the-builder",
+  "commit": "43e82d1",
+  "run_command": "source env.sh && env -u CLAUDE_CONFIG_DIR .venv/bin/python builder/build.py --general --minutes 35 --slot final --mock-url https://freya-statement-mock.denizcancan.workers.dev \"{case_folder}\"",
+  "workflow": "submission/final.workflow.json",
+  "trace": "traces/final.log",
+  "mock_url": "https://freya-statement-mock.denizcancan.workers.dev"
+}
