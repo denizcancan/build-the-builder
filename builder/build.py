@@ -94,14 +94,57 @@ Do this:
 Work only with the files named here."""
 
 
-async def run_claude(trace, label, prompt, max_turns=80):
+GENERAL_PROMPT = """You are a builder that turns a client's case material into a Freya phone agent (a workflow).
+The case does not fit a fixed form, so you write the workflow yourself, test it and fix it.
+
+Inputs:
+- The case folder: {case}. Read EVERY file in it, including PDF drawings and sub-folders. The material was written
+  at different times by different people and does not always agree: a later decision (a recap mail, a later meeting,
+  a later version of a document) replaces an earlier one. Note each conflict and which version you used.
+- The address of the mock of the client's services: {mock_url}. Every tool calls it, on the same paths the client's
+  integration document gives under its own base address.
+
+Do this:
+1. Read docs/workflow-format.md and docs/tools-and-code.md completely. They are the reference for the workflow JSON:
+   node types, prompts, tools, response_mapping, variables, transitions, code steps, how a call ends.
+2. Read the whole case folder. List for yourself: the call variables the agent receives, every service (path,
+   request body, response fields, error responses), every rule, every fixed sentence, every outcome and hand-off,
+   the language of the calls, and the example conversations.
+3. Write the workflow to {wf_path}. Rules that held in earlier working builds:
+   - Conversation steps with a focused task each; the system_prompt holds identity, language and the rules that
+     always hold. Speak only the language of the calls. Fixed sentences the client gives are said word for word.
+   - Tools are api_call tools with the mock URL + the contract's path, the contract's method and body, call
+     variables written as {{{{name}}}}. Map response fields into variables with response_mapping (paths start with data.).
+   - Route on tool results with deterministic transitions (a boolean may arrive as "true" or "True": check both).
+   - Dates and amounts: use the call's own date variable, never the system clock. Do date arithmetic in a code step
+     when it matters (code reads variables with vars.get(...); no double braces inside code).
+   - Never tell the caller that something was done (sent, changed, booked, transferred) before the tool result
+     confirms it. If a service fails or returns an error, say so honestly and follow the material's rule for it.
+   - Every way the call can end goes through a step that ends the call; hand-offs to a human use the material's
+     hand-off rule.
+   - Put one of the client's test customers in test_variables, using the case's call-variable names.
+4. Publish it: python3 builder/publish.py {slot} {wf_path} <speech language code, e.g. en or tr>
+   Fix whatever Freya rejects and publish again.
+5. Test it with scripted callers built from the example conversations and the test customers:
+   python3 builder/chat_test.py <workflow_id> '<call variables JSON>' "caller line 1" "caller line 2" ...
+   Cover at least: each example scenario, a service error case from the test data, and a hand-off. Read the agent's
+   answers, the tool calls and the step changes. Fix the workflow, publish, and test again until they behave as
+   the material requires. If the chat route returns 504 or is very slow, retry once, then move on.
+6. Write {meta_path}: {{"language": "<speech language code>", "conflicts": ["<conflict: which version you used>"],
+   "tests": ["<scenario: pass or what still fails>"]}}
+7. Finish with one line: the workflow path.
+
+Work fast: aim to be done within 40 minutes. Do not hard-code anything that is not in the case material."""
+
+
+async def run_claude(trace, label, prompt, max_turns=80, tools=None):
     """One Claude session through the Agent SDK. Every model turn is written to the trace."""
     from claude_agent_sdk import AssistantMessage, ClaudeAgentOptions, ResultMessage, TextBlock, ToolUseBlock, query
     options = ClaudeAgentOptions(
         cwd=KIT, model=MODEL,
         cli_path=os.environ.get("CLAUDE_CLI_PATH") or shutil.which("claude"),
         setting_sources=["project"],
-        allowed_tools=["Read", "Write", "Edit", "Glob", "Grep", "Bash(python3 builder/validate.py:*)"],
+        allowed_tools=tools or ["Read", "Write", "Edit", "Glob", "Grep", "Bash(python3 builder/validate.py:*)"],
         permission_mode="dontAsk", max_turns=max_turns,
     )
     with open(trace.raw, "a") as raw:
@@ -124,7 +167,9 @@ async def run_claude(trace, label, prompt, max_turns=80):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("briefs", nargs="+")
-    ap.add_argument("--api", required=True)
+    ap.add_argument("--api", help="the bank's tool API file (spec mode)")
+    ap.add_argument("--general", action="store_true", help="the case does not fit the spec form: Claude writes and tests the workflow itself")
+    ap.add_argument("--mock-url", help="address of the mock of the client's services (general mode)")
     ap.add_argument("--slot", required=True, help="your label; the same slot updates the same workflow")
     ap.add_argument("--spec", help="skip extraction and use this spec")
     ap.add_argument("--skip-review", action="store_true", help="skip the rule-by-rule check (only with --spec, for quick tests)")
@@ -134,6 +179,8 @@ def main():
 
     trace = Trace(a.slot)
     trace.line(f"START builder. Briefs: {a.briefs}. Tool API: {a.api}. Slot: {a.slot}. Builder model: {MODEL}.")
+    if a.general:
+        return general(a, trace)
     api = json.load(open(a.api))
     out = KIT / "out"; out.mkdir(exist_ok=True)
     spec_path = a.spec or str(out / f"{a.slot}.spec.json")
@@ -192,6 +239,38 @@ def main():
         if p.returncode != 0:
             err = (p.stderr.strip().splitlines() or ["no error output"])[-1]
             trace.line(f"test: the self-test stopped with an error: {err[:300]}")
+    trace.close()
+    print(f"\nTrace: {trace.path}")
+
+
+def general(a, trace):
+    """General mode: Claude reads the whole case, writes the workflow, publishes it, tests it by chat and fixes it."""
+    out = KIT / "out"; out.mkdir(exist_ok=True)
+    wf_path, meta_path = out / f"{a.slot}.workflow.json", out / f"{a.slot}.meta.json"
+    for f in (wf_path, meta_path): f.unlink(missing_ok=True)
+    case = " ".join(str(pathlib.Path(b).resolve()) for b in a.briefs)
+    trace.line(f"GENERAL MODE. Case: {case}. Mock: {a.mock_url}")
+    trace.line("STEP 1: Claude reads the case, writes the workflow, publishes it, tests it by chat and fixes it.")
+    tools = ["Read", "Write", "Edit", "Glob", "Grep", "Bash(python3 builder/publish.py:*)", "Bash(python3 builder/chat_test.py:*)",
+             "Bash(curl:*)", "Bash(ls:*)", "Bash(pdftotext:*)"]
+    asyncio.run(run_claude(trace, "build and test", GENERAL_PROMPT.format(case=case, mock_url=a.mock_url, slot=a.slot, wf_path=wf_path, meta_path=meta_path),
+                           max_turns=200, tools=tools))
+    if not wf_path.exists():
+        trace.line("No workflow was written."); trace.close(); sys.exit("No workflow; see the trace.")
+    meta = {}
+    try: meta = json.load(open(meta_path))
+    except Exception as e: trace.line(f"meta file missing or unreadable ({e})")
+    if meta.get("language"): freya.SPEECH_LANGUAGE = meta["language"]
+    for c in meta.get("conflicts", []): trace.line("conflict: " + str(c)[:300])
+    for t in meta.get("tests", []): trace.line("self-test: " + str(t)[:300])
+    wf = json.load(open(wf_path))
+    trace.line("STEP 2: validate on Freya, save in place, publish, export.")
+    trace.line("Freya dry run: " + json.dumps(freya.validate_workflow(a.slot, wf)))
+    saved = freya.save_workflow(a.slot, wf, state_file=str(KIT / ".freya-agents.json"))
+    trace.line(f"Freya resources: workflow_id={saved['workflow_id']} agent_id={saved['agent_id']} version={saved.get('version', 1)} steps={len(wf['nodes'])}")
+    exp = out / f"{a.slot}.export.json"
+    freya.export_workflow(saved["workflow_id"], str(exp))
+    trace.line(f"Exported to {exp}")
     trace.close()
     print(f"\nTrace: {trace.path}")
 
